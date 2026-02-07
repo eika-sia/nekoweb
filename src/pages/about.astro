@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About - NEURO SYNAPSE">
+	<article class="panel panel-container">
+		<h1>About</h1>
+		
+		<section class="bio-section">
+			<p>I'm a neuroscientist and computer engineer researching the intersection of brain function and computational systems through neural dynamics, computational neuroscience, and vector logic.</p>
+			
+			<p>This blog explores these intersections through comic book storytelling—bold visuals, bigger ideas, and clear communication about complex neuroscience topics.</p>
+
+			<div class="contact-info">
+				<a href="https://eikasia.net">Full Site</a></p>
+			</div>
+		</section>
+	</article>
+</Layout>
+
+<style>
+	.panel h1 {
+		color: var(--color-accent-red);
+		font-size: 2.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.bio-section p {
+		color: var(--color-text);
+		font-size: 1.1rem;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+	}
+
+	.contact-info {
+		margin-top: 2rem;
+		padding-top: 2rem;
+		border-top: 3px solid var(--color-dark);
+	}
+
+	.contact-info p {
+		color: var(--color-text);
+		margin: 0;
+		font-weight: 600;
+	}
+
+	.contact-info a {
+		color: var(--color-accent-blue);
+		border-bottom: 2px solid var(--color-accent-blue);
+		transition: all 0.2s ease;
+	}
+
+	.contact-info a:hover {
+		color: var(--color-accent-red);
+		border-color: var(--color-accent-red);
+	}
+
+	@media (max-width: 640px) {
+		.about-page {
+			padding: 1.5rem;
+		}
+
+		.about-page h1 {
+			font-size: 1.75rem;
+		}
+	}
+</style>
+</Layout>

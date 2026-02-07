@@ -1,0 +1,74 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Links - NEURO SYNAPSE">
+	<article class="panel panel-container">
+		<h1>Links</h1>
+		<p class="intro">A collection of buttons and links to interesting places on the web.</p>
+
+		<section class="links-section">
+			<h2>Cool Links</h2>
+			<div class="button-collection">
+				<!-- Add neocities-style buttons here -->
+			</div>
+		</section>
+
+		<section class="links-section">
+			<h2>Buttons</h2>
+			<div class="button-collection">
+				<!-- Add button codes here -->
+			</div>
+		</section>
+	</article>
+</Layout>
+
+<style>
+	.panel h1 {
+		color: var(--color-accent-red);
+		font-size: 2.5rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.intro {
+		color: #666;
+		font-size: 1rem;
+		margin-bottom: 2rem;
+		font-style: italic;
+	}
+
+	.links-page h2 {
+		color: var(--color-accent-blue);
+		border-bottom: 3px solid var(--color-dark);
+		padding-bottom: 0.5rem;
+		margin: 2rem 0 1.5rem 0;
+		font-size: 1.5rem;
+	}
+
+	.button-collection {
+		background: var(--color-bg);
+		border: 3px solid var(--color-dark);
+		padding: 2rem;
+		min-height: 150px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #999;
+		font-style: italic;
+		margin-bottom: 2rem;
+	}
+
+	@media (max-width: 640px) {
+		.links-page {
+			padding: 1.5rem;
+		}
+
+		.links-page h1 {
+			font-size: 1.75rem;
+		}
+
+		.button-collection {
+			min-height: 100px;
+		}
+	}
+</style>

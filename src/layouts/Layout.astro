@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Sidebar from '../components/Sidebar.astro';
+
+export interface Props {
+	title: string;
+	showSidebar?: boolean;
+}
+
+const { title, showSidebar = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<ClientRouter />
+	</head>
+	<body>
+		<div class="page-layout">
+			{showSidebar && <Sidebar />}
+			<main class="main-content" transition:animate="slide">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
+
+<style>
+	.page-layout {
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: 0.8rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1.5rem 1rem;
+	}
+
+	.main-content {
+		width: 100%;
+	}
+
+	@media (max-width: 900px) {
+		.page-layout {
+			grid-template-columns: 1fr;
+			padding: 1rem;
+			padding-left: 3.5rem;
+		}
+	}
+</style>

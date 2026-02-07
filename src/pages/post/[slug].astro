@@ -1,0 +1,260 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+type Props = {
+	post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, author, date } = post.data;
+---
+
+<Layout title={title}>
+	<main class="post-container panel-container">
+		<article class="panel post-article">
+			<header class="post-header">
+				<a href="/" class="back-link">← back to hub</a>
+				<h1>{title}</h1>
+				<p class="post-meta">
+					by <span class="author">{author}</span> • 
+					<time datetime={date.toISOString()}>
+						{date.toLocaleDateString('en-US', { 
+							year: 'numeric', 
+							month: 'long', 
+							day: 'numeric' 
+						})}
+					</time>
+				</p>
+				<p class="post-description">{description}</p>
+			</header>
+
+			<div class="post-content">
+				<Content />
+			</div>
+
+			<footer class="post-footer">
+				<a href="/" class="back-link">← back to hub</a>
+			</footer>
+		</article>
+	</main>
+</Layout>
+
+<style>
+	main {
+
+	}
+
+	.post-container {
+		padding: 1rem 0 0 1rem;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.post-article {
+	}
+
+	@keyframes shimmer {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+
+	.post-header {
+		position: relative;
+		z-index: 2;
+		margin-bottom: 2rem;
+		border-bottom: 4px solid #000;
+		padding-bottom: 2rem;
+	}
+
+	.back-link {
+		display: inline-block;
+		margin-bottom: 1rem;
+		padding: 0.5rem 1rem;
+		font-family: var(--font-comic);
+		font-size: 0.9rem;
+		font-weight: 700;
+		color: #1a1a1a;
+		background: #fff;
+		border: 3px solid #000;
+		text-decoration: none;
+		transition: all 0.2s ease;
+		box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+		cursor: pointer;
+	}
+
+	.back-link:hover {
+		color: #dc143c;
+		border: 3px solid #dc143c;
+		transform: translate(-2px, -2px);
+		box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.post-article h1 {
+		margin: 0.5rem 0 1rem 0;
+		font-size: 2.5rem;
+		color: #dc143c;
+		font-family: var(--font-comic);
+		font-weight: 900;
+		text-shadow: 3px 3px 0 #ffd700;
+	}
+
+	.post-meta {
+		color: #1a1a1a;
+		font-family: 'Georgia', serif;
+		font-size: 0.9rem;
+		margin: 0.5rem 0;
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.author {
+		color: #00008b;
+		font-weight: 600;
+	}
+
+	.post-description {
+		font-size: 1.1rem;
+		color: #1a1a1a;
+		font-style: italic;
+		margin-top: 1rem;
+		padding: 1rem;
+		background: #f5f5dc;
+		border-left: 4px solid #dc143c;
+		font-family: 'Georgia', serif;
+	}
+
+	.post-content {
+		position: relative;
+		z-index: 2;
+		font-size: 1rem;
+		line-height: 1.8;
+		margin: 2rem 0;
+		color: #1a1a1a;
+		font-family: 'Georgia', serif;
+	}
+
+	:global(.post-content h2) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: #00008b;
+		font-family: var(--font-comic);
+		font-weight: 700;
+		font-size: 1.8rem;
+		text-shadow: 3px 3px 0 #ffd700, 6px 6px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	:global(.post-content h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+		color: #dc143c;
+		font-family: var(--font-comic);
+		font-weight: 700;
+		font-size: 1.4rem;
+	}
+
+	:global(.post-content p) {
+		color: #1a1a1a;
+		margin: 1rem 0;
+	}
+
+	:global(.post-content strong),
+	:global(.post-content b) {
+		color: #dc143c;
+		font-weight: 900;
+		font-family: var(--font-comic);
+	}
+
+	:global(.post-content ul) {
+		list-style: none;
+		padding-left: 1.5rem;
+	}
+
+	:global(.post-content li) {
+		margin: 0.5rem 0;
+		position: relative;
+		padding-left: 1rem;
+		color: #1a1a1a;
+	}
+
+	:global(.post-content li::before) {
+		content: '✦ ';
+		position: absolute;
+		left: 0;
+		color: #dc143c;
+		font-weight: bold;
+	}
+
+	:global(.post-content code) {
+		background-color: #fff !important;
+		border: 3px solid #000 !important;
+		color: #1a1a1a !important;
+		padding: 0.2rem 0.4rem !important;
+		font-weight: bold !important;
+	}
+
+	:global(.post-content pre) {
+		background-color: #fff !important;
+		border: 3px solid #000 !important;
+		overflow-x: auto;
+		box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2) !important;
+	}
+
+	:global(.post-content pre code) {
+		border: none !important;
+		background: none !important;
+		color: #1a1a1a !important;
+	}
+
+	:global(.post-content a) {
+		color: #00008b;
+		text-decoration: none;
+		border-bottom: 3px solid #00008b;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+
+	:global(.post-content a:hover) {
+		color: #dc143c;
+		border-bottom: 3px solid #dc143c;
+	}
+
+	.post-footer {
+		position: relative;
+		z-index: 2;
+		margin-top: 3rem;
+		padding-top: 2rem;
+		border-top: 4px solid #000;
+	}
+
+	@media (max-width: 640px) {
+		.post-container {
+			padding: 1rem;
+		}
+
+		.post-article {
+			padding: 1.5rem;
+		}
+
+		.post-article h1 {
+			font-size: 1.75rem;
+		}
+
+		.post-description {
+			font-size: 1rem;
+		}
+	}
+</style>
