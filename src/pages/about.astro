@@ -12,7 +12,7 @@ import Layout from '../layouts/Layout.astro';
 			<p>This blog explores these intersections through comic book storytelling—bold visuals, bigger ideas, and clear communication about complex neuroscience topics.</p>
 
 			<div class="contact-info">
-				<a href="https://eikasia.net">Full Site</a></p>
+				<a href="https://eikasia.net">Full Site</a>
 			</div>
 		</section>
 	</article>
@@ -38,12 +38,6 @@ import Layout from '../layouts/Layout.astro';
 		border-top: 3px solid var(--color-dark);
 	}
 
-	.contact-info p {
-		color: var(--color-text);
-		margin: 0;
-		font-weight: 600;
-	}
-
 	.contact-info a {
 		color: var(--color-accent-blue);
 		border-bottom: 2px solid var(--color-accent-blue);
@@ -56,11 +50,7 @@ import Layout from '../layouts/Layout.astro';
 	}
 
 	@media (max-width: 640px) {
-		.about-page {
-			padding: 1.5rem;
-		}
-
-		.about-page h1 {
+		.panel h1 {
 			font-size: 1.75rem;
 		}
 	}
