@@ -14,6 +14,7 @@
     "@astrojs/sitemap": "^3.7.0",
     "@indiefellas/astro-adapter-nekoweb": "^3.7.1",
     "astro": "^5.17.1",
+    "dotenv": "^17.2.4",
     "sharp": "^0.34.3",
     "typescript": "^5.9.3"
   }

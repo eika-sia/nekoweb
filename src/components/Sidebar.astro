@@ -33,7 +33,6 @@ const recentPosts = allPosts
 <script>
 	const toggle = document.querySelector('.sidebar-toggle');
 	const sidebar = document.querySelector('.sidebar');
-	const wrapper = document.querySelector('.sidebar-wrapper');
 
 	if (toggle && sidebar) {
 		toggle.addEventListener('click', () => {
@@ -41,7 +40,6 @@ const recentPosts = allPosts
 			toggle.classList.toggle('active');
 		});
 
-		// Close sidebar when clicking a link
 		const links = sidebar.querySelectorAll('a');
 		links.forEach(link => {
 			link.addEventListener('click', () => {

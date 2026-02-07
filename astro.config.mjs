@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { defineConfig } from "astro/config";
 import nekoweb from "@indiefellas/astro-adapter-nekoweb";
 
