@@ -12,11 +12,14 @@ const { title, showSidebar = true } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-astro-history="replace">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ClientRouter />

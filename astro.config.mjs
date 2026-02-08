@@ -5,6 +5,7 @@ import nekoweb from "@indiefellas/astro-adapter-nekoweb";
 // https://astro.build/config
 export default defineConfig({
 	site: "https://eika.nekoweb.org",
+	prefetch: false,
 	adapter: nekoweb({
 		apiKey: process.env.NEKOWEB_API,
 		domain: "eika.nekoweb.org",

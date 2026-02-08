@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&display=swap");
 :root {
 	--color-bg: #f5f5dc;
 	--color-text: #1a1a1a;
@@ -8,6 +9,7 @@
 	--color-white: #fff;
 	--font-comic: "Atkinson", sans-serif;
 	--font-sans: Georgia, "Times New Roman", serif;
+	--font-punk: "Bangers", cursive;
 }
 @font-face {
 	font-family: "Atkinson";
@@ -40,6 +42,12 @@ html {
 body {
 	font-family: var(--font-sans);
 	background: var(--color-bg);
+	background-image: radial-gradient(
+		circle,
+		rgba(0, 0, 0, 0.08) 1px,
+		transparent 2px
+	);
+	background-size: 12px 12px;
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -55,13 +63,17 @@ body {
 
 .panel {
 	background: var(--color-white);
-	border: 5px solid var(--color-dark);
-	border-bottom: 8px solid var(--color-dark);
-	border-right: 8px solid var(--color-dark);
+	border: 3px solid var(--color-dark);
 	padding: 3rem;
-	box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 5px 5px 0px var(--color-dark);
 	position: relative;
 	overflow: hidden;
+	transition: all 0.2s ease-in-out;
+}
+
+.panel:hover {
+	transform: translate(-2px, -2px);
+	box-shadow: 7px 7px 0px var(--color-dark);
 }
 
 .panel-container {
@@ -98,7 +110,7 @@ h6 {
 	margin: 0 0 0.5rem 0;
 	color: var(--color-dark);
 	line-height: 1.2;
-	font-family: var(--font-comic);
+	font-family: var(--font-punk);
 	font-weight: 900;
 	letter-spacing: 0.02em;
 }
@@ -286,7 +298,6 @@ hr {
 	width: 100%;
 	max-width: 1600px;
 	margin: 0 auto;
-	background: #f5f5dc;
 }
 
 .blog-grid > * {
